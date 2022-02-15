@@ -46,7 +46,7 @@ current_data = dt.date.today()
 
 new_pixel = {
     'date': current_data.strftime('%Y%m%d'),
-    'quantity': '0.4',
+    'quantity': input('How many time you spent today?'),
 }
 # response = requests.post(url=PIXEL_ENDPOINT, json=new_pixel, headers=headers)
 # print(response.text)
@@ -54,23 +54,23 @@ new_pixel = {
 
 #.............................UPDATE PIXEL..............................
 
-day_to_update = current_data.strftime('%Y%m%d')
+# day_to_update = current_data.strftime('%Y%m%d')
+#
+#
+# UPDATE_ENDPOINT = f'{PIXEL_ENDPOINT}/{day_to_update}'
+#
+# update_config = {
+#     'quantity': input('How many time you spent today?')
+# }
+#
+# # response = requests.put(url=UPDATE_ENDPOINT, json=update_config, headers=headers)
+# # print(response.text)
+#
+# #........................DELETE PIXEL....................................
+#
+# day_to_del = dt.datetime(year=2022, month=2, day=12).strftime('%Y%m%d')
+#
+# DEL_ENDPOINT = f'{PIXEL_ENDPOINT}/{day_to_del}'
 
-
-UPDATE_ENDPOINT = f'{PIXEL_ENDPOINT}/{day_to_update}'
-
-update_config = {
-    'quantity': '0.5'
-}
-
-# response = requests.put(url=UPDATE_ENDPOINT, json=update_config, headers=headers)
+# response = requests.delete(url=DEL_ENDPOINT, headers=headers)
 # print(response.text)
-
-#........................DELETE PIXEL....................................
-
-day_to_del = dt.datetime(year=2022, month=2, day=12).strftime('%Y%m%d')
-
-DEL_ENDPOINT = f'{PIXEL_ENDPOINT}/{day_to_del}'
-
-response = requests.delete(url=DEL_ENDPOINT, headers=headers)
-print(response.text)
