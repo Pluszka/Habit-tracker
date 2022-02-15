@@ -63,5 +63,14 @@ update_config = {
     'quantity': '0.5'
 }
 
-response = requests.put(url=UPDATE_ENDPOINT, json=update_config, headers=headers)
+# response = requests.put(url=UPDATE_ENDPOINT, json=update_config, headers=headers)
+# print(response.text)
+
+#........................DELETE PIXEL....................................
+
+day_to_del = dt.datetime(year=2022, month=2, day=12).strftime('%Y%m%d')
+
+DEL_ENDPOINT = f'{PIXEL_ENDPOINT}/{day_to_del}'
+
+response = requests.delete(url=DEL_ENDPOINT, headers=headers)
 print(response.text)
