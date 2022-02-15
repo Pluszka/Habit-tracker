@@ -1,5 +1,6 @@
 import requests
 import os
+import datetime as dt
 
 USERNAME = 'pluszka'
 
@@ -15,7 +16,10 @@ user_params = {
 # response = requests.post(url=PIXELA_ENDPOINT, json=user_params)
 # print(response.text)
 
+#.............................CREATING GRAPH..........................
+
 GRAPH_ENDPOINT = f'{PIXELA_ENDPOINT}/{USERNAME}/graphs'
+GRAPH1_ID = 'comicg1'
 
 graph_config = {
     'id': 'comicg1',
@@ -30,5 +34,22 @@ headers = {
     'X-USER-TOKEN': os.environ.get('PIXELA_TOKEN')
 }
 
-response = requests.post(url=GRAPH_ENDPOINT, json=graph_config, headers=headers)
-print(response.text)
+# response = requests.post(url=GRAPH_ENDPOINT, json=graph_config, headers=headers)
+# print(response.text)
+
+#..........................ADDING NEW PIXEL.....................................
+
+PIXEL_ENDPOINT = f'{GRAPH_ENDPOINT}/{GRAPH1_ID}'
+
+# current_data = dt.datetime(year=2022, month=2, day=12)
+current_data = dt.date.today()
+
+new_pixel = {
+    'date': current_data.strftime('%Y%m%d'),
+    'quantity': '0.4',
+}
+# response = requests.post(url=PIXEL_ENDPOINT, json=new_pixel, headers=headers)
+# print(response.text)
+
+response = request.put(url=PIXEL_ENDPOINT, json=new_pixel, headers=head)
+
