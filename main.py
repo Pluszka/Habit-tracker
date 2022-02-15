@@ -51,5 +51,17 @@ new_pixel = {
 # response = requests.post(url=PIXEL_ENDPOINT, json=new_pixel, headers=headers)
 # print(response.text)
 
-response = request.put(url=PIXEL_ENDPOINT, json=new_pixel, headers=head)
 
+#.............................UPDATE PIXEL..............................
+
+day_to_update = current_data.strftime('%Y%m%d')
+
+
+UPDATE_ENDPOINT = f'{PIXEL_ENDPOINT}/{day_to_update}'
+
+update_config = {
+    'quantity': '0.5'
+}
+
+response = requests.put(url=UPDATE_ENDPOINT, json=update_config, headers=headers)
+print(response.text)
